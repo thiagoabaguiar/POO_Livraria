@@ -2,14 +2,14 @@ package livraria;
 
 public interface Publicacao {
     
-    public void abrir();
+    public boolean abrir();
     
-    public void fechar();
+    public boolean fechar();
     
-    public void folhear();
+    public int folhear();
     
-    public void avancarPag();
+    public int avancarPag();
     
-    public void voltarPag();    
+    public int voltarPag();    
     
 }

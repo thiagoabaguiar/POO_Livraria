@@ -1,6 +1,8 @@
 package livraria;
 
-public class Livro implements Publicacao{
+import java.util.Random;
+
+public class Livro implements Publicacao {
 
     // ATRIBUTOS
     private String titulo, autor;
@@ -13,6 +15,8 @@ public class Livro implements Publicacao{
         this.titulo = titulo;
         this.autor = autor;
         this.totalPaginas = totalPaginas;
+        this.pagAtual = 0;
+        this.aberto = false;
     }
 
     // GETTERS e SETTERS
@@ -45,7 +49,13 @@ public class Livro implements Publicacao{
     }
 
     public void setPagAtual(int pagAtual) {
-        this.pagAtual = pagAtual;
+
+        if (pagAtual >= 0 && pagAtual <= this.totalPaginas) {
+
+            this.pagAtual = pagAtual;
+
+        }
+
     }
 
     public boolean isAberto() {
@@ -67,33 +77,79 @@ public class Livro implements Publicacao{
     // MÉTODOS PÚBLICOS
     public String detalhes() {
 
-        String detalhes = "#### DETALHES DO LIVRO: ####"
-                + this.getTitulo() + "\n"
-                + this.getAutor() + "\n"
-                + this.getTotalPaginas() + "\n";
-
-        return detalhes;
+        return "#### DETALHES DO LIVRO: #### \n"
+                + "Título: " + this.getTitulo() + "\n"
+                + "Autor: " + this.getAutor() + "\n"
+                + "Total de Páginas: " + this.getTotalPaginas() + "\n"
+                + "Página atual: " + this.getPagAtual() + "\n"
+                + "Livro aberto? " + this.isAberto() + "\n"
+                + "#################################### \n";
 
     }
 
     @Override
-    public void abrir() {
+    public boolean abrir() {
+        this.setAberto(true);
+        return this.isAberto();
     }
 
     @Override
-    public void fechar() {
+    public boolean fechar() {
+        this.setAberto(false);
+        return this.isAberto();
     }
 
     @Override
-    public void folhear() {
+    public int folhear() {
+
+        Random paginaAleatoria = new Random();
+
+        this.setPagAtual(paginaAleatoria.nextInt(this.getTotalPaginas() + 1));
+
+        return this.getPagAtual();
+
     }
 
     @Override
-    public void avancarPag() {
+    public int avancarPag() {
+
+        if (this.isAberto() && this.getPagAtual() < this.getTotalPaginas()) {
+
+            this.setPagAtual(this.getPagAtual() + 1);
+
+        } else if (this.getPagAtual() == this.getTotalPaginas()) {
+
+            System.out.println("Já está na última página");
+
+        } else if (!this.isAberto()) {
+
+            System.out.println("Livro fechado. Impossível avançar página");
+
+        }
+
+        return this.getPagAtual();
+
     }
 
     @Override
-    public void voltarPag() {
+    public int voltarPag() {
+
+        if (this.isAberto() && this.getPagAtual() > 0) {
+
+            this.setPagAtual(this.getPagAtual() - 1);
+
+        } else if (this.isAberto() && this.getPagAtual() == 0) {
+
+            System.out.println("Já está na primeira página");
+
+        } else if (!this.isAberto()) {
+            
+            System.out.println("Livro fechado. Impossível voltar página");
+            
+        }
+
+        return this.getPagAtual();
+
     }
 
 }
