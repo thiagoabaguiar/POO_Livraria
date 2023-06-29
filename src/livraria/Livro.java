@@ -83,6 +83,7 @@ public class Livro implements Publicacao {
                 + "Total de Páginas: " + this.getTotalPaginas() + "\n"
                 + "Página atual: " + this.getPagAtual() + "\n"
                 + "Livro aberto? " + this.isAberto() + "\n"
+                + "Leitor atual: " + this.leitor.getNome() + "\n"
                 + "#################################### \n";
 
     }

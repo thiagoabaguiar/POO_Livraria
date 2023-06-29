@@ -16,8 +16,7 @@ public class Livraria {
         
         leitores[0].lerLivro(livro1);     
         
-        System.out.println(leitores[0].getLivroEmLeitura().getTitulo());;
-        System.out.println(livro1.getLeitor().getNome());;
+        System.out.println(livro1.detalhes());;
         
     }
     
