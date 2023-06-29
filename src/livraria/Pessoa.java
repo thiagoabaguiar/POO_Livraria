@@ -49,7 +49,7 @@ public class Pessoa {
 
     private void setLivroEmLeitura(Livro livroEmLeitura) {
         this.livroEmLeitura = livroEmLeitura;
-        livroEmLeitura.setLeitor(this);
+        livroEmLeitura.setLeitorAtual(this);
     }       
 
     // MÉTODOS PÚBLICOS

@@ -8,7 +8,7 @@ public class Livro implements Publicacao {
     private String titulo, autor;
     private int totalPaginas, pagAtual;
     private boolean aberto;
-    private Pessoa leitor;
+    private Pessoa leitorAtual;
 
     // CONSTRUTOR
     public Livro(String titulo, String autor, int totalPaginas) {
@@ -17,7 +17,7 @@ public class Livro implements Publicacao {
         this.totalPaginas = totalPaginas;
         this.pagAtual = 0;
         this.aberto = false;
-        this.leitor = null;
+        this.leitorAtual = null;
     }
 
     // GETTERS e SETTERS
@@ -67,12 +67,12 @@ public class Livro implements Publicacao {
         this.aberto = aberto;
     }
 
-    public Pessoa getLeitor() {
-        return leitor;
+    public Pessoa getLeitorAtual() {
+        return leitorAtual;
     }
 
-    public void setLeitor(Pessoa leitor) {        
-        this.leitor = leitor;
+    public void setLeitorAtual(Pessoa leitorAtual) {        
+        this.leitorAtual = leitorAtual;
     }
    
     public String detalhes() {
@@ -83,7 +83,7 @@ public class Livro implements Publicacao {
                 + "Total de Páginas: " + this.getTotalPaginas() + "\n"
                 + "Página atual: " + this.getPagAtual() + "\n"
                 + "Livro aberto? " + this.isAberto() + "\n"
-                + "Leitor atual: " + this.leitor.getNome() + "\n"
+                + "Leitor atual: " + this.leitorAtual.getNome() + "\n"
                 + "#################################### \n";
 
     }
