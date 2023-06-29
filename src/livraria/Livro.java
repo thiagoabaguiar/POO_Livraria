@@ -17,6 +17,7 @@ public class Livro implements Publicacao {
         this.totalPaginas = totalPaginas;
         this.pagAtual = 0;
         this.aberto = false;
+        this.leitor = null;
     }
 
     // GETTERS e SETTERS
@@ -70,11 +71,10 @@ public class Livro implements Publicacao {
         return leitor;
     }
 
-    public void setLeitor(Pessoa leitor) {
+    public void setLeitor(Pessoa leitor) {        
         this.leitor = leitor;
     }
-
-    // MÉTODOS PÚBLICOS
+   
     public String detalhes() {
 
         return "#### DETALHES DO LIVRO: #### \n"
@@ -143,10 +143,19 @@ public class Livro implements Publicacao {
             System.out.println("Já está na primeira página");
 
         } else if (!this.isAberto()) {
-            
+
             System.out.println("Livro fechado. Impossível voltar página");
-            
+
         }
+
+        return this.getPagAtual();
+
+    }
+
+    @Override
+    public int acharPag(int pagina) {
+
+        this.setPagAtual(pagina);
 
         return this.getPagAtual();
 

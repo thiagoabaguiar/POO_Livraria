@@ -5,14 +5,16 @@ public class Pessoa {
     // ATRIBUTOS
     private String nome;
     private int idade;
-    private char sexo;
+    private String sexo;
+    private Livro livroEmLeitura;
 
     // CONSTRUTOR
-    public Pessoa(String nome, int idade, char sexo) {
+    public Pessoa(String nome, int idade, String sexo) {
 
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
+        this.livroEmLeitura = null;
 
     }
 
@@ -33,13 +35,22 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return this.sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public Livro getLivroEmLeitura() {
+        return livroEmLeitura;
+    }
+
+    private void setLivroEmLeitura(Livro livroEmLeitura) {
+        this.livroEmLeitura = livroEmLeitura;
+        livroEmLeitura.setLeitor(this);
+    }       
 
     // MÉTODOS PÚBLICOS
     public int fazerAniversario() {
@@ -47,6 +58,16 @@ public class Pessoa {
         this.setIdade(this.getIdade() + 1);
         return this.getIdade();
 
+    }
+
+    public int lerLivro(Livro livro) {
+        
+        this.setLivroEmLeitura(livro);
+        livro.abrir();
+        livro.folhear();
+        
+        return livro.getPagAtual();
+        
     }
 
 }
